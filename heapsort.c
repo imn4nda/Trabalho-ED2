@@ -32,14 +32,14 @@ void criaHeap (int* vet, int ini, int fim, int* comp, int* troca) {
 void heapSort (int* vet, int tam, int* troca, int* comp) {
     int aux, i;
     for (i = ((tam-1)/2); i >= 0; i--) {
-        criaHeap(vet, i, tam-1, troca, comp);
-        i = i - 1;
+        criaHeap(vet, i, tam-1, comp, troca);
     }
+    
     for (i = tam-1; i >= 1; i--) {
         aux = vet[0];
         vet[0] = vet[i];
         vet[i] = aux;
         (*troca)++;
-        criaHeap(vet, 0, i-1, troca, comp);
+        criaHeap(vet, 0, i-1, comp, troca);
     }
 }

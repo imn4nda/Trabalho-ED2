@@ -27,5 +27,4 @@ int* insertionSortBin (int* vet, int tam, int* troca, int* comp) {
         vet[dir] = aux;
         (*troca)++;
     }
-    return vet;
 }
