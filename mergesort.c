@@ -1,3 +1,4 @@
+#include "mergesort.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -30,28 +31,4 @@ int* mergeSort (int* vet, int ini, int fim, int* comp) {
         intercalacao(vet, ini, meio, fim, comp);
     }
     return vet;
-}
-
-int main() {
-    int vetor[] = {4, 2, 9, 3, 5, 7};
-    int troca = 0, comp = 0;
-    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
-    double tempo;
-    clock_t inicio, fim;
-
-    inicio = clock();
-    int* vetorNovo = mergeSort(vetor, 0, tamanho - 1, &comp);
-    fim = clock();
-
-    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-
-    printf("Vetor ordenado:\n");
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", vetorNovo[i]);
-    }
-
-    printf("\nTempo execucao\tTrocas\tComparacoes\n");
-    printf("%lf\t%d\t%d\n", tempo, troca, comp);
-
-    return 0;
 }

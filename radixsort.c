@@ -1,3 +1,4 @@
+#include "radixsort.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -34,28 +35,4 @@ void radixSort(int* vet, int tam, int* comp, int* troca) {
         exp *= 10;
     }
     free(b);
-}
-
-int main() {
-    int vetor[] = {4, 2, 9, 3, 5, 7, 8, 123, 5, 10, 100, 1000, 10000, 100000, 1000000, 2415};
-    int troca = 0, comp = 0;
-    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
-    double tempo;
-    clock_t inicio, fim;
-
-    inicio = clock();
-    radixSort(vetor, tamanho, &comp, &troca);
-    fim = clock();
-
-    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-
-    printf("Vetor ordenado:\n");
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", vetor[i]);
-    }
-
-    printf("\nTempo execucao\tTrocas\tComparacoes\n");
-    printf("%lf\t%d\t%d\n", tempo, troca, comp);
-
-    return 0;
 }

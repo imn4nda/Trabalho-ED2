@@ -1,3 +1,4 @@
+#include "quicksortfim.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -39,29 +40,4 @@ void quickSortFim (int* vet, int esq, int dir, int* comp, int* troca) {
         quickSortFim(vet, esq, i-1, comp, troca);
         quickSortFim(vet, i, dir, comp, troca);
     }
-}
-
-
-int main() {
-    int vetor[] = {4, 2, 9, 3, 5, 7};
-    int troca = 0, comp = 0;
-    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
-    double tempo;
-    clock_t inicio, fim;
-
-    inicio = clock();
-    quickSortFim(vetor, 0, tamanho - 1, &comp, &troca);
-    fim = clock();
-
-    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-
-    printf("Vetor ordenado:\n");
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", vetor[i]);
-    }
-
-    printf("\nTempo execucao\tTrocas\tComparacoes\n");
-    printf("%lf\t%d\t%d\n", tempo, troca, comp);
-
-    return 0;
 }
