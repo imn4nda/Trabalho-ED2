@@ -1,64 +1,49 @@
-#include "quicksortmediana.h"
+#include "quicksortmeio.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-int mediana (int* vet, int esq, int dir, int* comp, int* troca) {
-    int meio = (esq + dir) / 2, aux;
-
-    (*comp)++;
-    if (vet[esq] > vet[meio]) {
-        aux = vet[esq];
-        vet[esq] = vet[meio];
-        vet[meio] = aux;
-        (*troca)++;
-    }
-    (*comp)++;
-    if (vet[esq] > vet[dir]) {
-        aux = vet[esq];
-        vet[esq] = vet[dir];
-        vet[dir] = aux;
-        (*troca)++;
-    }
-    (*comp)++;
-    if (vet[meio] > vet[dir]) {
-        aux = vet[meio];
-        vet[meio] = vet[dir];
-        vet[dir] = aux;
-        (*troca)++;
-    }
-    return vet[meio];
-}
-
-int particao (int* vet, int esq, int dir, int* comp, int* troca) {
-    int i = esq, j = dir, aux, pivo = mediana(vet, esq, dir, comp, troca);
+void particao(int* vet, int esq, int dir, int* i, int* j, int* comp, int* troca) {
+    *i = esq;
+    *j = dir;
+    int aux, pivo = vet[(*i + *j) / 2];
     
-    while (i <= j) {
-        (*comp)++;
-        while (vet[i] < pivo && i < dir) {
-            i++;
+    while(*i <= *j) {
+        while(vet[*i] < pivo) {
+            (*comp)++;
+            (*i)++;
+        }
+        (*comp)++; 
+        
+        while(vet[*j] > pivo) {
+            (*comp)++;
+            (*j)--;
         }
         (*comp)++;
-        while (vet[j] > pivo && j > esq) {
-            j--;
-        }
-
-        if (i <= j) {
-            aux = vet[i];
-            vet[i] = vet[j];
-            vet[j] = aux;
-            (*troca)++;
-            i++;
-            j--;
+        
+        if(*i <= *j) {
+            if(*i != *j) {
+                aux = vet[*i];
+                vet[*i] = vet[*j];
+                vet[*j] = aux;
+                (*troca)++;
+            }
+            (*i)++;
+            (*j)--;
         }
     }
-    return i;
 }
 
-void quickSortMediana (int* vet, int esq, int dir, int* comp, int* troca) {
-    if (esq < dir) {
-        int i = particao(vet, esq, dir, comp, troca);
-        quickSortMediana(vet, esq, i-1, comp, troca);
-        quickSortMediana(vet, i, dir, comp, troca);
+void quickSortMeio(int* vet, int esq, int dir, int* comp, int* troca) {
+    int i, j;
+    
+    if(esq < dir) {
+        particao(vet, esq, dir, &i, &j, comp, troca);
+        if(j > esq) {
+            quickSortMeio(vet, esq, j, comp, troca);
+        }
+        if(i < dir) {
+            quickSortMeio(vet, i, dir, comp, troca);
+        }
     }
 }

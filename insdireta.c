@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
-int* insercaoDireta(int* vet, int tam, int* troca, int* comp) {
+void insercaoDireta(int* vet, int tam, int* troca, int* comp) {
     int i, j, aux;
     for (i = 1; i < tam; i++) {
         aux = vet[i];
@@ -23,5 +23,4 @@ int* insercaoDireta(int* vet, int tam, int* troca, int* comp) {
             (*troca)++;
         }
     }
-    return vet;
 }
