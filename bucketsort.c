@@ -16,56 +16,62 @@ baldes[j].topo → quantos elementos ele tem
 */
 
 void bubbleSortParada (int* vet, int tam, int* troca, int* comp) {
-    int j, aux, indice;
-    int mudou = 1;
-
-    while (mudou) {
-        mudou = 0;
-        indice = tam - 1;
-        for (j = 1; j < tam; j++) {
+    int i, j, aux;
+    int houveTroca;
+    for(i = 0; i < tam - 1; i++) {
+        houveTroca = 0;
+        for(j = 0; j < tam - i - 1; j++) {
             (*comp)++;
-            if (vet[j-1] > vet[j]) {
-                aux = vet[j-1];
-                vet[j-1] = vet[j];
+            if (vet[j] > vet[j+1]) {
+                aux = vet[j];
+                vet[j] = vet[j+1];
+                vet[j+1] = aux;
                 (*troca)++;
-                vet[j] = aux;
-                mudou = 1;
-                indice = j;
+                houveTroca = 1;
             }
         }
-        tam = indice;
+        if (!houveTroca) break;
     }
 }
 
+int encontrarMax(int* vet, int tam) {
+    int max = vet[0];
+    for(int i = 1; i < tam; i++) {
+        if(vet[i] > max) max = vet[i];
+    }
+    return max;
+}
+
 void bucketSort (int* vet, int tam, int numeroBaldes, int* comp, int* troca) {
-    int i, j, k;
-    Balde baldes[numeroBaldes];
-    for (i = 0; i < numeroBaldes; i++) {
+    Balde* baldes = (Balde*)malloc(numeroBaldes * sizeof(Balde));
+    int i, j, indice;
+    int max = encontrarMax(vet, tam);
+
+    for(i = 0; i < numeroBaldes; i++) {
         baldes[i].topo = 0;
-        if (baldes[i].topo > 0) {
+    }
+
+    for(i = 0; i < tam; i++) {
+        indice = vet[i] * numeroBaldes / (max + 1);
+        if(indice >= numeroBaldes) indice = numeroBaldes - 1;
+        baldes[indice].balde[baldes[indice].topo++] = vet[i];
+    }
+
+    for(i = 0; i < numeroBaldes; i++) {
+        if(baldes[i].topo > 0){
             bubbleSortParada(baldes[i].balde, baldes[i].topo, troca, comp);
         }
     }
-    for (i = 0; i < tam; i++) {
-        j = numeroBaldes;
-        while (j > 0) {
-            (*comp)++;
-            if (vet[i] >= j*10) {
-                baldes[j].balde[baldes[j].topo] = vet[i];
-                baldes[j].topo = baldes[j].topo + 1;
-            }
-            j--;
+
+    indice = 0;
+    for(i = 0; i < numeroBaldes; i++) {
+        for(j = 0; j < baldes[i].topo; j++) {
+            vet[indice++] = baldes[i].balde[j];
         }
     }
-    i = 0;
-    for (j = 0; j < numeroBaldes; j++) {
-        for (k = 0; k < baldes[j].topo; k++) {
-            vet[i] = baldes[j].balde[k];
-            (*troca)++;
-            i++;
-        }
-    }
-} 
+
+    free(baldes);
+}
 
 int main() {
     int vetor[] = {4, 2, 9, 3, 5, 7};
@@ -75,7 +81,7 @@ int main() {
     clock_t inicio, fim;
 
     inicio = clock();
-    bucketSort(vetor, tamanho - 1, 20, &comp, &troca);
+    bucketSort(vetor, tamanho, 20, &comp, &troca);
     fim = clock();
 
     tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
