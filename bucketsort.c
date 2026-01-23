@@ -3,7 +3,7 @@
 #include "bucketsort.h"
 #include "balde.h"
 
-void bubbleSortParada(int* vet, int tam, int* troca, int* comp) {
+void bubbleSortParadaInterno(int* vet, int tam, int* troca, int* comp) {
     int i, j, aux;
     int houveTroca;
     
@@ -51,7 +51,7 @@ void bucketSort(int* vet, int tam, int numeroBaldes, int* comp, int* troca) {
     for(i = 0; i < numeroBaldes; i++) {
         int tamanho = tamanhoBaldes(&baldes[i]);
         if(tamanho > 0) {
-            bubbleSortParada(baldes[i].balde, tamanho, troca, comp);
+            bubbleSortParadaInterno(baldes[i].balde, tamanho, troca, comp);
         }
     }
     
