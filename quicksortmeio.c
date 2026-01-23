@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void particao (int* vet, int esq, int dir, int* i, int* j, int* comp, int* troca) {
+void particaoMeio(int* vet, int esq, int dir, int* i, int* j, int* comp, int* troca) {
     *i = esq;
     *j = dir;
     int aux, pivo = vet[(*i+*j)/2];
@@ -31,7 +31,7 @@ void particao (int* vet, int esq, int dir, int* i, int* j, int* comp, int* troca
 void quickSortMeio (int* vet, int esq, int dir, int* comp, int* troca) {
     int i, j;
     
-    particao(vet, esq, dir, &i, &j, comp, troca);
+    particaoMeio(vet, esq, dir, &i, &j, comp, troca);
     if (j > esq) {
         quickSortMeio(vet, esq, j, comp, troca);
     }

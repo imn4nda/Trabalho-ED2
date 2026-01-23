@@ -18,6 +18,9 @@ int* shellSort (int* vet, int tam, int* troca, int* comp) {
                 (*troca)++;
                 j = j - h;
             }
+            if(j >= 0) {
+                (*comp)++;
+            }
             vet[j + h] = aux;
             (*troca)++;
         }

@@ -16,7 +16,6 @@ int* selectionSort (int* vet, int tam, int* troca, int* comp) {
         if (i != menor) {
             aux = vet[i];
             vet[i] = vet[menor];
-            (*troca)++;
             vet[menor] = aux;
             (*troca)++;
         }

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int* bubbleSort(int* vet, int tam, int* troca, int* comp) {
+void bubbleSort(int* vet, int tam, int* troca, int* comp) {
     int i, j, aux;
     for (i = tam - 1; i >= 1; i--) {
         for (j = 0; j < i; j++) {
@@ -16,5 +16,4 @@ int* bubbleSort(int* vet, int tam, int* troca, int* comp) {
             }
         }
     }
-    return vet;
 }
