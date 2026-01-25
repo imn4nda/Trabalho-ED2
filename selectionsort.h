@@ -1,6 +1,6 @@
 #ifndef SELECTIONSORT_H
 #define SELECTIONSORT_H
 
-int* selectionSort (int* vet, int tam, int* troca, int* comp);
+int* selectionSort (int* vet, int tam, long* troca, long* comp);
 
 #endif

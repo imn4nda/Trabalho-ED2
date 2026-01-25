@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void insertionSortBin (int* vet, int tam, int* troca, int* comp) {
+void insertionSortBin (int* vet, int tam, long* troca, long* comp) {
     int i, j, esq, dir, meio, aux;
 
     for (i = 1; i < tam; i++) {

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void particaoMediana(int* vet, int esq, int dir, int* i, int* j, int* comp, int* troca) {
+void particaoMediana(int* vet, int esq, int dir, int* i, int* j, long* comp, long* troca) {
     *i = esq;
     *j = dir;
     int aux, pivo = vet[(*i + *j) / 2];
@@ -34,7 +34,7 @@ void particaoMediana(int* vet, int esq, int dir, int* i, int* j, int* comp, int*
     }
 }
 
-void quickSortMediana(int* vet, int esq, int dir, int* comp, int* troca) {
+void quickSortMediana(int* vet, int esq, int dir, long* comp, long* troca) {
     int i, j;
     
     if(esq < dir) {

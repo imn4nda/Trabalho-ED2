@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void intercalacao(int* vet, int ini, int meio, int fim, int* comp, int* troca) {
+void intercalacao(int* vet, int ini, int meio, int fim, long* comp, long* troca) {
     int i = ini, j = meio + 1, k = 0;
     int Tmp[fim - ini + 1];
     
@@ -28,7 +28,7 @@ void intercalacao(int* vet, int ini, int meio, int fim, int* comp, int* troca) {
     }
 }
 
-void mergeSort(int* vet, int ini, int fim, int* comp, int* troca) {
+void mergeSort(int* vet, int ini, int fim, long* comp, long* troca) {
     if (ini < fim) {
         int meio = (ini + fim) / 2;
         mergeSort(vet, ini, meio, comp, troca);

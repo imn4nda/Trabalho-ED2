@@ -1,6 +1,6 @@
 #ifndef INSTERNARIA_H
 #define INSTERNARIA_H
 
-void insertionSortTer (int* vet, int tam, int* troca, int* comp);
+void insertionSortTer (int* vet, int tam, long* troca, long* comp);
 
 #endif
