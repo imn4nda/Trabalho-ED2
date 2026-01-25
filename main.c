@@ -126,10 +126,17 @@ int main(int argc, char* argv[]) {
         radixSort(vetor, tamanho, &comp, &troca);
     }
     else if(strcmp(algoritmo, "bucketsort") == 0) {
-        int numeroBaldes = tamanho / 100;
-        if(numeroBaldes < 10) numeroBaldes = 10;
-        bucketSort(vetor, tamanho, numeroBaldes, &comp, &troca);
+    int numeroBaldes;
+    if(tamanho <= 10000) {
+        numeroBaldes = 100;
+    } else if(tamanho <= 100000) {
+        numeroBaldes = 1000;
+    } else {
+        numeroBaldes = 2000;
     }
+    
+    bucketSort(vetor, tamanho, numeroBaldes, &comp, &troca);
+}
     else {
         printf("Algoritmo '%s' nao reconhecido!\n", algoritmo);
         free(vetor);

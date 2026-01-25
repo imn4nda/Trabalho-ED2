@@ -1,7 +1,7 @@
 #ifndef BALDE_H
 #define BALDE_H
 
-#define TAM 10000
+#define TAM 1000
 
 typedef struct {
     int balde[TAM];
