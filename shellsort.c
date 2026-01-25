@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int* shellSort (int* vet, int tam, int* troca, int* comp) {
+int* shellSort (int* vet, int tam, long* troca, long* comp) {
     int h = 1, i, j, aux;
     while (h < tam) {
         h = 3*h + 1;

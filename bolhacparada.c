@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void bubbleSortParada (int* vet, int tam, int* troca, int* comp) {
+void bubbleSortParada (int* vet, int tam, long* troca, long* comp) {
     int j, aux, indice;
     int mudou = 1;
 
