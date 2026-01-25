@@ -142,8 +142,8 @@ int main(int argc, char* argv[]) {
     printf("Algoritmo: %s\n", algoritmo);
     printf("Elementos: %d\n", tamanho);
     printf("Tempo: %.6f segundos\n", tempo);
-    printf("Comparacoes: %d\n", comp);
-    printf("Trocas: %d\n", troca);
+    printf("Comparacoes: %ld\n", comp);
+    printf("Trocas: %ld\n", troca);
     printf("\nArquivo 'saida.txt' gerado com sucesso!\n");
     
     free(vetor);
