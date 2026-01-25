@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    long comp = 0, troca = 0;
+    long long comp = 0, troca = 0;
     double tempo;
     clock_t inicio, fim;
 

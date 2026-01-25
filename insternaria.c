@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void insertionSortTer (int* vet, int tam, long* troca, long* comp) {
+void insertionSortTer (int* vet, int tam, long long* troca, long long* comp) {
     int i, j, dir, esq, terco1, terco2, aux;
 
     for (i = 1; i < tam; i++) {
