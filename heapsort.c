@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void criaHeap (int* vet, int ini, int fim, long* comp, long* troca) {
+void criaHeap (int* vet, int ini, int fim, long long* comp, long long* troca) {
     int aux, j;
     aux = vet[ini]; //guarda o pai
     j = ini * 2 + 1;
@@ -29,7 +29,7 @@ void criaHeap (int* vet, int ini, int fim, long* comp, long* troca) {
     (*troca)++; 
 }
 
-void heapSort (int* vet, int tam, long* troca, long* comp) {
+void heapSort (int* vet, int tam, long long* troca, long long* comp) {
     int aux, i;
     for (i = ((tam-1)/2); i >= 0; i--) {
         criaHeap(vet, i, tam-1, comp, troca);

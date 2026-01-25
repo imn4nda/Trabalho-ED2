@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int particaoFim(int* vet, int esq, int dir, long* comp, long* troca) {
+int particaoFim(int* vet, int esq, int dir, long long* comp, long long* troca) {
     int pivo = vet[dir]; 
     int i = esq - 1;
     int aux;
@@ -30,7 +30,7 @@ int particaoFim(int* vet, int esq, int dir, long* comp, long* troca) {
     return i;
 }
 
-void quickSortFim(int* vet, int esq, int dir, long* comp, long* troca) {
+void quickSortFim(int* vet, int esq, int dir, long long* comp, long long* troca) {
     if(esq < dir) {
         int pivo = particaoFim(vet, esq, dir, comp, troca);
         quickSortFim(vet, esq, pivo - 1, comp, troca);

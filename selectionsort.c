@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int* selectionSort (int* vet, int tam, long* troca, long* comp) {
+int* selectionSort (int* vet, int tam, long long* troca, long long* comp) {
     int i, j, menor, aux;
     for (i = 0; i < tam - 1; i++) {
         menor = i;

@@ -3,7 +3,7 @@
 #include "bucketsort.h"
 #include "balde.h"
 
-void bubbleSortParadaInterno(int* vet, int tam, long* troca, long* comp) {
+void bubbleSortParadaInterno(int* vet, int tam, long long* troca, long long* comp) {
     int i, j, aux;
     int houveTroca;
     
@@ -33,7 +33,7 @@ int encontrarMaximo(int* vet, int tam) {
     return max;
 }
 
-void bucketSort(int* vet, int tam, int numeroBaldes, long* comp, long* troca) {
+void bucketSort(int* vet, int tam, int numeroBaldes, long long* comp, long long* troca) {
     Balde* baldes = (Balde*)malloc(numeroBaldes * sizeof(Balde));
     int i, j, indice;
     int maxValor = encontrarMaximo(vet, tam);

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void radixSort(int* vet, int tam, long* comp, long* troca) {
+void radixSort(int* vet, int tam, long long* comp, long long* troca) {
     int i;
     int* b;
     int maior = vet[0];
