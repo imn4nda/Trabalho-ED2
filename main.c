@@ -18,6 +18,12 @@
 #include "selectionsort.h"
 #include "shellsort.h"
 
+#ifdef _WIN32
+    #define LLD "%I64d"
+#else
+    #define LLD "%lld"
+#endif
+
 int* lerArquivo(int* tamanho) {
     FILE* arquivo = fopen("entrada.txt", "r");
     if(arquivo == NULL) {
@@ -45,11 +51,11 @@ void escreverArquivo(int* vetor, int tamanho) {
         printf("Erro ao criar arquivo de saida!\n");
         return;
     }
-    
+
     for(int i = 0; i < tamanho; i++) {
         fprintf(arquivo, "%d\n", vetor[i]);
     }
-    
+
     fclose(arquivo);
 }
 
@@ -134,7 +140,7 @@ int main(int argc, char* argv[]) {
     } else {
         numeroBaldes = 2000;
     }
-    
+
     bucketSort(vetor, tamanho, numeroBaldes, &comp, &troca);
 }
     else {
@@ -149,10 +155,10 @@ int main(int argc, char* argv[]) {
     printf("Algoritmo: %s\n", algoritmo);
     printf("Elementos: %d\n", tamanho);
     printf("Tempo: %.6f segundos\n", tempo);
-    printf("Comparacoes: %lld\n", comp);
-    printf("Trocas: %lld\n", troca);
+    printf("Comparacoes: " LLD "\n", comp);
+    printf("Trocas: " LLD "\n", troca);
     printf("\nArquivo 'saida.txt' gerado com sucesso!\n");
-    
+
     free(vetor);
     return 0;
 }
